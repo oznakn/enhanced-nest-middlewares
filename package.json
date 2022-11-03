@@ -1,0 +1,50 @@
+{
+  "name": "enhanced-nest-middlewares",
+  "version": "0.1.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "author": {
+    "name": "Ozan Akın",
+    "email": "ozn.akn@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oznakn/enhanced-nest-middlewares.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oznakn/enhanced-nest-middlewares/issues"
+  },
+  "homepage": "https://github.com/oznakn/enhanced-nest-middlewares#enhanced-nest-middlewares",
+  "scripts": {
+    "build": "yarn clean && tsc",
+    "build:watch": "yarn clean && tsc -w",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "debug": "^4.3.4",
+    "rxjs": "^7.5.7"
+  },
+  "devDependencies": {
+    "@nestjs/common": "^9.1.6",
+    "@nestjs/core": "^9.1.6",
+    "@types/debug": "^4.1.7",
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "eslint": "^8.20.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.4"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^9.0.0",
+    "@nestjs/core": "^9.0.0",
+    "reflect-metadata": "^0.1.0"
+  }
+}
