@@ -1,5 +1,4 @@
-import { MIDDLEWARE_KEY } from './constants';
-import { extendArrayMetadata, isFunction, validateEach } from './helpers';
+import { extendArrayMetadata, isFunction, MIDDLEWARE_KEY, validateEach } from './defs';
 import { Middleware } from './middleware.interface';
 
 const isMiddlewareValid = <T extends Function | Record<string, any>>(

@@ -1,9 +1,16 @@
 {
   "name": "enhanced-nest-middlewares",
+  "description": "Bare NestJS middlewares instead of express or fastify",
   "version": "0.1.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
+  "keywords": [
+    "nestjs",
+    "middleware",
+    "express",
+    "fastify"
+  ],
   "author": {
     "name": "Ozan Akın",
     "email": "ozn.akn@gmail.com"

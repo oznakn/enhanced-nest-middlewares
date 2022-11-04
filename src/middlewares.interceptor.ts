@@ -1,42 +1,17 @@
 import createDebug from 'debug';
-import { lastValueFrom, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { GUARDS_METADATA } from '@nestjs/common/constants';
 import { ModuleRef, Reflector } from '@nestjs/core';
 
-import { MIDDLEWARE_KEY } from './constants';
+import { ClassType, MIDDLEWARE_KEY, pickResult } from './defs';
+import { globalMiddlewares } from './global-middleware.decorator';
 
 import type { CallHandler, CanActivate, ExecutionContext, NestInterceptor } from '@nestjs/common';
 
 import type { Middleware } from './middleware.interface';
 
-interface ClassType<T = any> extends Function {
-  new (...args: any[]): T;
-}
-
 const debug = createDebug('enhanced-nest-middlewares');
-
-const globalMiddlewares: Array<ClassType<Middleware>> = [];
-
-async function pickResult<T>(result: T | Promise<T> | Observable<T>): Promise<T> {
-  if (result instanceof Observable) {
-    return lastValueFrom(result);
-  }
-
-  return result;
-}
-
-export function RegisterMiddleware({ isGlobal }: { isGlobal?: boolean } = {}): ClassDecorator {
-  return (target: any) => {
-    Injectable()(target);
-
-    debug(`Registering middleware ${target.name}`);
-
-    if (isGlobal === true) {
-      globalMiddlewares.push(target);
-    }
-  };
-}
 
 @Injectable()
 export class MiddlewaresInterceptor implements NestInterceptor {

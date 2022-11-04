@@ -1,3 +1,11 @@
+import { lastValueFrom, Observable } from 'rxjs';
+
+export const MIDDLEWARE_KEY = '__rj43d_Middleware__';
+
+export interface ClassType<T = any> extends Function {
+  new (...args: any[]): T;
+}
+
 export class InvalidDecoratorItemException extends Error {
   private readonly msg: string;
 
@@ -43,4 +51,12 @@ export function validateEach(
   }
 
   return true;
+}
+
+export async function pickResult<T>(result: T | Promise<T> | Observable<T>): Promise<T> {
+  if (result instanceof Observable) {
+    return lastValueFrom(result);
+  }
+
+  return result;
 }
